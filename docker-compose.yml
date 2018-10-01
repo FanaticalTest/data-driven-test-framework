@@ -12,8 +12,8 @@ services:
      - 3306:3306
     environment:
      MYSQL_ROOT_PASSWORD: changeit
-     MYSQL_DATABASE: wow-auction
-     MYSQL_USER: wow-auction
+     MYSQL_DATABASE: data-driven-test
+     MYSQL_USER: data-driven-test
      MYSQL_PASSWORD: changeit
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
