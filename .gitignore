@@ -24,3 +24,10 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### Volumes ###
+/volumes/mysql/*
+!/volumes/mysql/.gitkeep
+
+### Mac ###
+.DS_Store
