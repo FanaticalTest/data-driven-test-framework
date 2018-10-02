@@ -55,4 +55,27 @@ public class ModulesTests {
         printWriter.printf(module.toString());
         printWriter.close();
     }
+
+    @Test
+    public void compareWithAndWithoutParam()
+    {
+        String snippet = indentation + "elem = driver.find_element_by_name(\"q\")" + newLine;
+        snippet += indentation + "elem.send_keys(\"pycon\")" + newLine;
+        snippet += indentation + "elem.send_keys(Keys.RETURN)" + newLine;
+        Module module = new Module(1,"Find element", snippet);
+        log.info(module.toString());
+
+        ArrayList<ModuleParameters> mp= new ArrayList<ModuleParameters>();
+        mp.add(new ModuleParameters(1,"var","elem"));
+        mp.add(new ModuleParameters(2,"id_element","q"));
+        mp.add(new ModuleParameters(3,"search_value","pycon"));
+
+        String snippetWP = indentation + "%%var%% = driver.find_element_by_name(\"%%id_element%%\")" + newLine;
+        snippetWP += indentation + "%%var%%.send_keys(\"%%search_value%%\")" + newLine;
+        snippetWP += indentation + "%%var%%.send_keys(Keys.RETURN)" + newLine;
+        Module moduleWP = new Module(1,"Find element", snippetWP, mp);
+        log.info(moduleWP.toString());
+
+        assert (module.toString().equals(moduleWP.toString()));
+    }
 }
