@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -30,6 +31,26 @@ public class ModulesTests {
         log.info(module.toString());
 
         FileWriter fileWriter = new FileWriter(outPutFilePath +"snippetFindElement.txt");
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        printWriter.printf(module.toString());
+        printWriter.close();
+    }
+
+    @Test
+    public void createSnippetFindElementWithParam() throws IOException
+    {
+        ArrayList<ModuleParameters> mp= new ArrayList<ModuleParameters>();
+        mp.add(new ModuleParameters(1,"var","elem"));
+        mp.add(new ModuleParameters(2,"id_element","q"));
+        mp.add(new ModuleParameters(3,"search_value","pycon"));
+
+        String snippet = indentation + "%%var%% = driver.find_element_by_name(\"%%id_element%%\")" + newLine;
+        snippet += indentation + "%%var%%.send_keys(\"%%search_value%%\")" + newLine;
+        snippet += indentation + "%%var%%.send_keys(Keys.RETURN)" + newLine;
+        Module module = new Module(1,"Find element", snippet, mp);
+        log.info(module.toString());
+
+        FileWriter fileWriter = new FileWriter(outPutFilePath +"snippetWithParamFindElement.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.printf(module.toString());
         printWriter.close();

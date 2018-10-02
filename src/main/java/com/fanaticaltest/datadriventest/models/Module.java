@@ -1,17 +1,28 @@
 package com.fanaticaltest.datadriventest.models;
 
 
+import java.util.ArrayList;
+
 public class Module {
 
     private Integer id;
     private String name;
     private String comment;
     private String snippet;
+    private ArrayList<ModuleParameters> moduleParameter;
 
     public Module(Integer id, String name, String snippet) {
         this.id = id;
         this.name = name;
         this.snippet = snippet;
+        this.moduleParameter = new ArrayList<ModuleParameters>();
+    }
+
+    public Module(Integer id, String name, String snippet, ArrayList<ModuleParameters> moduleParameter) {
+        this.id = id;
+        this.name = name;
+        this.snippet = snippet;
+        this.moduleParameter = moduleParameter;
     }
 
     public Integer getId() {
@@ -46,8 +57,25 @@ public class Module {
         this.snippet = snippet;
     }
 
+    public ArrayList<ModuleParameters> getModuleParameter() {
+        return moduleParameter;
+    }
+
+    public void setModuleParameter(ArrayList<ModuleParameters> moduleParameter) {
+        this.moduleParameter = moduleParameter;
+    }
+
+    private String snippetParametrized(){
+        if (moduleParameter.size() > 0) {
+            for (ModuleParameters mp : moduleParameter) {
+                snippet = snippet.replace("%%" + mp.getName() + "%%", mp.getValue());
+            }
+        }
+        return snippet;
+    }
+
     @Override
     public String toString() {
-        return snippet;
+        return snippetParametrized();
     }
 }
