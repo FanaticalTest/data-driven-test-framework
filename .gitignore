@@ -29,5 +29,9 @@
 /volumes/mysql/*
 !/volumes/mysql/.gitkeep
 
+### OutputFiles for Test ###
+/src/test/resources/outputFiles/*
+!/src/test/resources/outputFiles/.gitkeep
+
 ### Mac ###
 .DS_Store
