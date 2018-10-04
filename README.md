@@ -2,7 +2,7 @@
 This Data driven test framework is using initially Selenium, then other technology could be added
 
 ## Run
- * Run locally the service
+* Run locally the service
 ```
 gradle bootRun
 ```
@@ -10,3 +10,9 @@ gradle bootRun
 ## Docker
 ### PhpMyAdmin
 Use `docker.for.mac.localhost` for the host
+
+## Python
+* Run the generated Python file
+```
+python ./src/test/resources/outputFiles/scenarioPythonFile.py
+```

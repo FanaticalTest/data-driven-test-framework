@@ -123,7 +123,17 @@ public class Scenario {
 
         buildPythonFile += this.pythonDefSetup.toPython()+ "\n";
 
-        //Code here
+        buildPythonFile += "\tdef test(self):\n";
+
+        if (this.steps.size()>0)
+        {
+            for (Step step : this.steps)
+            {
+                buildPythonFile += step.toPython();
+            }
+        }
+
+        buildPythonFile += "\n";
 
         buildPythonFile += this.pythonDefTearDown.toPython()+ "\n";
 

@@ -130,7 +130,7 @@ public class ScenarioTest {
 
         scenario.setPythonDefSetup(pythonDefSetup);
 
-        // More here...
+        scenario.setSteps(buildSteps());
 
         // Add pythonDefTearDown
         PythonDefTearDown pythonDefTearDown = new PythonDefTearDown(1,"Python TearDown", "This is a description");
@@ -147,7 +147,7 @@ public class ScenarioTest {
         //log and file
         log.info(scenario.toPython());
 
-        FileWriter fileWriter = new FileWriter(outPutFilePath +"scenarioPythonFile.txt");
+        FileWriter fileWriter = new FileWriter(outPutFilePath +"scenarioPythonFile.py");
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.printf(scenario.toPython());
         printWriter.close();
@@ -160,8 +160,11 @@ public class ScenarioTest {
         assert (scenario.toPython().contains("\t\tself.driver = webdriver.Remote(\n"));
         assert (scenario.toPython().contains("\t\t\tcommand_executor='http://localhost:4444/wd/hub',\n"));
         assert (scenario.toPython().contains("\t\t\tdesired_capabilities={'browserName': 'firefox', 'version': '3', 'javascriptEnabled': True})\n"));
-        assert (pythonDefTearDown.toPython().contains("\tdef tearDown(self):\n"));
-        assert (pythonDefTearDown.toPython().contains("\t\tself.driver.close()\n"));
+        assert (scenario.toPython().contains("\tdef tearDown(self):\n"));
+        assert (scenario.toPython().contains("\t\tself.driver.close()\n"));
+        assert (scenario.toPython().contains("\tdef test(self):\n"));
+        assert (scenario.toPython().contains("\t\tdriver = self.driver\n"));
+        assert (scenario.toPython().contains("\t\tassert \"No results found.\" not in driver.page_source\n"));
 
     }
 
