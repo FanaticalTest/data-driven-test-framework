@@ -168,7 +168,7 @@ public class ScenarioTest {
 
     }
 
-    private ArrayList<Step> buildSteps ()
+    public ArrayList<Step> buildSteps ()
     {
         ArrayList<Step> steps = new ArrayList<Step>();
 

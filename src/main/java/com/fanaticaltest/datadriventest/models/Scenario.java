@@ -108,7 +108,7 @@ public class Scenario {
             }
         }
 
-        buildScenario += "\n\n";
+        buildScenario += "\n";
 
         return buildScenario;
     }
