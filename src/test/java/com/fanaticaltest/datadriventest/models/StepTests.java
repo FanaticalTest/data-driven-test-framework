@@ -38,6 +38,8 @@ public class StepTests {
         modules.add(module);
         step.setModules(modules);
 
+        log.info(step.toString());
+
         FileWriter fileWriter = new FileWriter(outPutFilePath +"step.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.printf(step.toString());
