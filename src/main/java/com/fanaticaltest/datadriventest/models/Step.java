@@ -53,9 +53,23 @@ public class Step {
     }
 
     //Methods
-    @Override
-    public String toString() {
-        return String.valueOf(gherkinsKeyword) + " " + phrase;
+    public String toGherkinsFile(){
+        return String.valueOf(this.gherkinsKeyword) + " " + this.phrase;
+    }
+
+    public String toPython()
+    {
+        String buildPythonFile = "";
+
+        if (this.modules.size()>0)
+        {
+            for (Module module : this.modules)
+            {
+                buildPythonFile += module.toPython();
+            }
+        }
+
+        return buildPythonFile;
     }
 
 }

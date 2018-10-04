@@ -80,16 +80,15 @@ public class Module {
 
     // Methods
     private String snippetParametrized(){
-        if (moduleParameter.size() > 0) {
-            for (ModuleParameters mp : moduleParameter) {
-                snippet = snippet.replace("%%" + mp.getName() + "%%", mp.getValue());
+        if (this.moduleParameter.size() > 0) {
+            for (ModuleParameters mp : this.moduleParameter) {
+                this.snippet = this.snippet.replace("%%" + mp.getName() + "%%", mp.getValue());
             }
         }
-        return snippet;
+        return this.snippet;
     }
 
-    @Override
-    public String toString() {
+    public String toPython() {
         return snippetParametrized();
     }
 }

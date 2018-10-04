@@ -38,12 +38,44 @@ public class PythonDefTests {
         Module module = new Module(1,"Setup module", snippet);
 
         modules.add(module);
+        pythonDefSetup.setModules(modules);
 
-        log.info(pythonDefSetup.toString());
+        log.info(module.toPython());
 
         FileWriter fileWriter = new FileWriter(outPutFilePath +"pythonDefSetup.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.printf(pythonDefSetup.toString());
+        printWriter.printf(pythonDefSetup.toPython());
         printWriter.close();
+
+        assert (pythonDefSetup.toPython().contains("\tdef setUp(self):\n"));
+        assert (pythonDefSetup.toPython().contains("\t\tself.driver = webdriver.Remote(\n"));
+        assert (pythonDefSetup.toPython().contains("\t\t\tcommand_executor='http://localhost:4444/wd/hub',\n"));
+        assert (pythonDefSetup.toPython().contains("\t\t\tdesired_capabilities={'browserName': 'firefox', 'version': '3', 'javascriptEnabled': True})\n"));
     }
+
+    @Test
+    public void createPythonDefTearDown() throws IOException
+    {
+        PythonDefTearDown pythonDefTearDown = new PythonDefTearDown(1,"Python TearDown", "This is a description");
+        ArrayList<Module> modules = new ArrayList<Module>();
+
+        String snippet = indentationOnce + "def tearDown(self):" + newLine;
+        snippet += indentationTwice + "self.driver.close()" + newLine;
+
+        Module module = new Module(1,"Setup module", snippet);
+
+        modules.add(module);
+        pythonDefTearDown.setModules(modules);
+
+        log.info(pythonDefTearDown.toPython());
+
+        FileWriter fileWriter = new FileWriter(outPutFilePath +"pythonDeftearDown.txt");
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        printWriter.printf(pythonDefTearDown.toPython());
+        printWriter.close();
+
+        assert (pythonDefTearDown.toPython().contains("\tdef tearDown(self):\n"));
+        assert (pythonDefTearDown.toPython().contains("\t\tself.driver.close()\n"));
+    }
+
 }

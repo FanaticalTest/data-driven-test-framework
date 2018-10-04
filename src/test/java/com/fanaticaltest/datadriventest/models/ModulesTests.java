@@ -30,11 +30,11 @@ public class ModulesTests {
         Module module = new Module(1,"Find element", snippet);
         module.setPosition(1);
         module.setComment("This is a comment");
-        log.info(module.toString());
+        log.info(module.toPython());
 
         FileWriter fileWriter = new FileWriter(outPutFilePath +"snippetFindElement.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.printf(module.toString());
+        printWriter.printf(module.toPython());
         printWriter.close();
     }
 
@@ -50,11 +50,11 @@ public class ModulesTests {
         snippet += indentation + "%%var%%.send_keys(\"%%search_value%%\")" + newLine;
         snippet += indentation + "%%var%%.send_keys(Keys.RETURN)" + newLine;
         Module module = new Module(1,"Find element", snippet, mp);
-        log.info(module.toString());
+        log.info(module.toPython());
 
         FileWriter fileWriter = new FileWriter(outPutFilePath +"snippetWithParamFindElement.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.printf(module.toString());
+        printWriter.printf(module.toPython());
         printWriter.close();
     }
 
@@ -67,7 +67,7 @@ public class ModulesTests {
         Module module = new Module(1,"Find element", snippet);
         module.setPosition(1);
         module.setComment("This is a comment");
-        log.info(module.toString());
+        log.info(module.toPython());
 
         ArrayList<ModuleParameters> mp= new ArrayList<ModuleParameters>();
         mp.add(new ModuleParameters(1,"var","elem"));
@@ -78,8 +78,8 @@ public class ModulesTests {
         snippetWP += indentation + "%%var%%.send_keys(\"%%search_value%%\")" + newLine;
         snippetWP += indentation + "%%var%%.send_keys(Keys.RETURN)" + newLine;
         Module moduleWP = new Module(1,"Find element", snippetWP, mp);
-        log.info(moduleWP.toString());
+        log.info(moduleWP.toPython());
 
-        assert (module.toString().equals(moduleWP.toString()));
+        assert (module.toPython().equals(moduleWP.toPython()));
     }
 }

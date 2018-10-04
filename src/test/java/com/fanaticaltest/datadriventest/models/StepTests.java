@@ -38,13 +38,23 @@ public class StepTests {
         modules.add(module);
         step.setModules(modules);
 
-        log.info(step.toString());
+        log.info(step.toGherkinsFile());
 
         FileWriter fileWriter = new FileWriter(outPutFilePath +"step.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.printf(step.toString());
+        printWriter.printf(step.toGherkinsFile());
         printWriter.close();
 
-        assert (step.toString().equals(stringValidation));
+        log.info(step.toPython());
+
+        fileWriter = new FileWriter(outPutFilePath +"stepPython.txt");
+        printWriter = new PrintWriter(fileWriter);
+        printWriter.printf(step.toPython());
+        printWriter.close();
+
+        assert (step.toGherkinsFile().equals(stringValidation));
+        assert (step.toPython().contains("\telem = driver.find_element_by_name(\"q\")\n"));
+        assert (step.toPython().contains("\telem.send_keys(\"pycon\")\n"));
+        assert (step.toPython().contains("\telem.send_keys(Keys.RETURN)\n"));
     }
 }

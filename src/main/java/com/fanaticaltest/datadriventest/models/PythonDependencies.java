@@ -1,20 +1,18 @@
 package com.fanaticaltest.datadriventest.models;
 
-
-import java.util.ArrayList;
-
-public class PythonDef {
+public class PythonDependencies {
 
     private Integer id;
     private String name;
     private String description;
-    private ArrayList<Module> modules;
+    private String snippet;
 
-    //Constructors
-    public PythonDef(Integer id, String name, String description) {
+    //Constructor
+    public PythonDependencies(Integer id, String name, String description, String snippet) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.snippet = snippet;
     }
 
     //Getter and Setter
@@ -43,25 +41,17 @@ public class PythonDef {
         this.description = description;
     }
 
-    public ArrayList<Module> getModules() {
-        return modules;
+    public String getSnippet() {
+        return snippet;
     }
 
-    public void setModules(ArrayList<Module> modules) {
-        this.modules = modules;
+    public void setSnippet(String snippet) {
+        this.snippet = snippet;
     }
 
-
-    public String toPython() {
-        String snippets = "";
-
-        if (this.modules.size()>0)
-        {
-            for (Module m : this.modules)
-            {
-                snippets += m.toPython();
-            }
-        }
-        return snippets;
+    //Method
+    public String toPython()
+    {
+        return this.snippet;
     }
 }
