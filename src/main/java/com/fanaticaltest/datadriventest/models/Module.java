@@ -10,12 +10,15 @@ public class Module {
     private String comment;
     private String snippet;
     private ArrayList<ModuleParameters> moduleParameter;
+    private Integer position;
 
+    // Constructors
     public Module(Integer id, String name, String snippet) {
         this.id = id;
         this.name = name;
         this.snippet = snippet;
         this.moduleParameter = new ArrayList<ModuleParameters>();
+        this.position = 0;
     }
 
     public Module(Integer id, String name, String snippet, ArrayList<ModuleParameters> moduleParameter) {
@@ -23,8 +26,10 @@ public class Module {
         this.name = name;
         this.snippet = snippet;
         this.moduleParameter = moduleParameter;
+        this.position = 0;
     }
 
+    //Getter and Setter
     public Integer getId() {
         return id;
     }
@@ -65,6 +70,15 @@ public class Module {
         this.moduleParameter = moduleParameter;
     }
 
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    // Methods
     private String snippetParametrized(){
         if (moduleParameter.size() > 0) {
             for (ModuleParameters mp : moduleParameter) {

@@ -25,3 +25,9 @@ services:
      - 8081:80
     volumes:
      - /sessions
+  selenium-firefox:
+      image: selenium/standalone-firefox-debug:3.14.0-beryllium
+      container_name: ft-selenium-firefox-3-14
+      ports:
+       - 4444:4444
+       - 5900:5900

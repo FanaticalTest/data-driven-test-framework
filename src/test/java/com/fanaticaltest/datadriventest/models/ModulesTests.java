@@ -28,6 +28,8 @@ public class ModulesTests {
         snippet += indentation + "elem.send_keys(\"pycon\")" + newLine;
         snippet += indentation + "elem.send_keys(Keys.RETURN)" + newLine;
         Module module = new Module(1,"Find element", snippet);
+        module.setPosition(1);
+        module.setComment("This is a comment");
         log.info(module.toString());
 
         FileWriter fileWriter = new FileWriter(outPutFilePath +"snippetFindElement.txt");
@@ -63,6 +65,8 @@ public class ModulesTests {
         snippet += indentation + "elem.send_keys(\"pycon\")" + newLine;
         snippet += indentation + "elem.send_keys(Keys.RETURN)" + newLine;
         Module module = new Module(1,"Find element", snippet);
+        module.setPosition(1);
+        module.setComment("This is a comment");
         log.info(module.toString());
 
         ArrayList<ModuleParameters> mp= new ArrayList<ModuleParameters>();
