@@ -2,6 +2,7 @@ package com.fanaticaltest.datadriventest.models;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Module {
 
@@ -9,7 +10,7 @@ public class Module {
     private String name;
     private String comment;
     private String snippet;
-    private ArrayList<ModuleParameters> moduleParameter;
+    private List<ModuleParameters> moduleParameter;
     private Integer position;
     private Step step;
 
@@ -21,7 +22,7 @@ public class Module {
         this.position = 0;
     }
 
-    public Module(String name, String snippet, ArrayList<ModuleParameters> moduleParameter) {
+    public Module(String name, String snippet, List<ModuleParameters> moduleParameter) {
         this.name = name;
         this.snippet = snippet;
         this.moduleParameter = moduleParameter;
@@ -61,7 +62,7 @@ public class Module {
         this.snippet = snippet;
     }
 
-    public ArrayList<ModuleParameters> getModuleParameter() {
+    public List<ModuleParameters> getModuleParameter() {
         return moduleParameter;
     }
 

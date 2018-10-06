@@ -1,6 +1,7 @@
 package com.fanaticaltest.datadriventest.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by samykacem on 04.10.18.
@@ -10,10 +11,10 @@ public class Feature {
     private Integer id;
     private String name;
     private String description;
-    private ArrayList<Scenario> scenarios;
+    private List<Scenario> scenarios;
 
     //Constructor
-    public Feature(String name, String description, ArrayList<Scenario> scenarios) {
+    public Feature(String name, String description, List<Scenario> scenarios) {
         this.name = name;
         this.description = description;
         this.scenarios = scenarios;
@@ -44,7 +45,7 @@ public class Feature {
         this.description = description;
     }
 
-    public ArrayList<Scenario> getScenarios() {
+    public List<Scenario> getScenarios() {
         return scenarios;
     }
 

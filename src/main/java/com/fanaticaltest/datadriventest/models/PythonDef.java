@@ -2,13 +2,14 @@ package com.fanaticaltest.datadriventest.models;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PythonDef {
 
     private Integer id;
     private String name;
     private String description;
-    private ArrayList<Module> modules;
+    private List<Module> modules;
     private Scenario scenario;
 
     //Constructors
@@ -42,7 +43,7 @@ public class PythonDef {
         this.description = description;
     }
 
-    public ArrayList<Module> getModules() {
+    public List<Module> getModules() {
         return modules;
     }
 

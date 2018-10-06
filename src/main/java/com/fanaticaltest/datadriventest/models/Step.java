@@ -1,6 +1,7 @@
 package com.fanaticaltest.datadriventest.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by samykacem on 02.10.18.
@@ -10,7 +11,7 @@ public class Step {
     private Integer id;
     private GherkinsKeyword gherkinsKeyword;
     private String phrase;
-    private ArrayList<Module> modules;
+    private List<Module> modules;
     private Scenario scenario;
 
     //Constructor
@@ -44,7 +45,7 @@ public class Step {
         this.phrase = phrase;
     }
 
-    public ArrayList<Module> getModules() {
+    public List<Module> getModules() {
         return modules;
     }
 

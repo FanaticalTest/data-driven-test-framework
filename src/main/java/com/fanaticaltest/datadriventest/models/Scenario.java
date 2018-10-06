@@ -1,14 +1,15 @@
 package com.fanaticaltest.datadriventest.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Scenario {
 
     private Integer id;
     private String name;
     private String description;
-    private ArrayList<GherkinsTag> gherkinsTags;
-    private ArrayList<Step> steps;
+    private List<GherkinsTag> gherkinsTags;
+    private List<Step> steps;
     private PythonDependencies pythonDependencies;
     private PythonDefSetup pythonDefSetup;
     private PythonDefTearDown pythonDefTearDown;
@@ -43,7 +44,7 @@ public class Scenario {
         this.description = description;
     }
 
-    public ArrayList<GherkinsTag> getGherkinsTags() {
+    public List<GherkinsTag> getGherkinsTags() {
         return gherkinsTags;
     }
 
@@ -51,7 +52,7 @@ public class Scenario {
         this.gherkinsTags = gherkinsTags;
     }
 
-    public ArrayList<Step> getSteps() {
+    public List<Step> getSteps() {
         return steps;
     }
 
