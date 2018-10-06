@@ -1,17 +1,27 @@
 package com.fanaticaltest.datadriventest.models;
 
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Module {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String name;
     private String comment;
     private String snippet;
+
+    @OneToMany(mappedBy="module")
+    @OrderBy("name ASC")
     private List<ModuleParameters> moduleParameter;
+
     private Integer position;
+
+    @Transient
     private Step step;
 
     // Constructors
@@ -98,5 +108,30 @@ public class Module {
 
     public String toPython() {
         return snippetParametrized();
+    }
+
+    private String moduleParamToString()
+    {
+        String output = "";
+
+        for (ModuleParameters mp : moduleParameter)
+        {
+            output += mp.toString();
+        }
+
+        return output;
+    }
+
+    @Override
+    public String toString() {
+        return "Module{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", comment='" + comment + '\'' +
+                ", snippet='" + snippet + '\'' +
+                ", moduleParameter=" + moduleParamToString() +
+                ", position=" + position +
+                ", step=" + step +
+                '}';
     }
 }

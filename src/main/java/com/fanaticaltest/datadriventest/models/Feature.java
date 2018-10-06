@@ -20,6 +20,14 @@ public class Feature {
         this.scenarios = scenarios;
     }
 
+    public Feature(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Feature() {
+    }
+
     //Getter and Setter
     public Integer getId() {
         return id;

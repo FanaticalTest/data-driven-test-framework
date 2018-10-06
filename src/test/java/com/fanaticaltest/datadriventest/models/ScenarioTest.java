@@ -11,6 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
+
+import static com.fanaticaltest.datadriventest.data.initialLoad.generateDemoFeature;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -203,5 +206,26 @@ public class ScenarioTest {
         step.setModules(modules);
 
         return step;
+    }
+
+    @Test
+    public void createScenarioPythonFileFormInitialLoad() throws IOException
+    {
+        Feature feature = new Feature();
+        feature = generateDemoFeature();
+
+        List<Scenario> scenarios= new ArrayList<>();
+        scenarios = feature.getScenarios();
+
+        FileWriter fileWriter = new FileWriter(outPutFilePath +"scenarioPythonFileFormInitialLoad.json");
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+
+        for (Scenario s : scenarios)
+        {
+            printWriter.printf(s.toString());
+        }
+
+        printWriter.close();
+
     }
 }

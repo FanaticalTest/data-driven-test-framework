@@ -152,4 +152,31 @@ public class Scenario {
 
         return buildPythonFile;
     }
+
+    private String toPythonPerStep()
+    {
+        String output = "";
+
+        for (Step s : steps)
+        {
+            output += s.toPython();
+        }
+
+        return output;
+    }
+
+    @Override
+    public String toString() {
+        return "Scenario{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", gherkinsTags=" + gherkinsTags +
+                ", steps=" + toPythonPerStep() +
+                ", pythonDependencies=" + pythonDependencies +
+                ", pythonDefSetup=" + pythonDefSetup +
+                ", pythonDefTearDown=" + pythonDefTearDown +
+                //", feature=" + feature +
+                '}';
+    }
 }

@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import static com.fanaticaltest.datadriventest.data.initialLoad.generateDemoFeature;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FeatureTest {
@@ -59,5 +61,19 @@ public class FeatureTest {
         assert (feature.toGherkinsFile().contains("\t\tGIVEN the user is on the home page\n"));
         assert (feature.toGherkinsFile().contains("\t\tWHEN the user enters the keyword \"pycon\"\n"));
         assert (feature.toGherkinsFile().contains("\t\tTHEN the user does not see the error message \"No results found.\"\n"));
+    }
+
+    @Test
+    public void createFeatureFileFromInitialLoad() throws IOException
+    {
+        Feature feature = new Feature();
+        feature = generateDemoFeature();
+
+        log.info(feature.toGherkinsFile());
+
+        FileWriter fileWriter = new FileWriter(outPutFilePath +"featureFromInitialLoad.txt");
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        printWriter.printf(feature.toGherkinsFile());
+        printWriter.close();
     }
 }
