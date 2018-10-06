@@ -13,7 +13,7 @@ public class Feature {
     private ArrayList<Scenario> scenarios;
 
     //Constructor
-    public Feature(Integer id, String name, String description, ArrayList<Scenario> scenarios) {
+    public Feature(String name, String description, ArrayList<Scenario> scenarios) {
         this.id = id;
         this.name = name;
         this.description = description;

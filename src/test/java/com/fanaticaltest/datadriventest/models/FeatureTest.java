@@ -29,12 +29,12 @@ public class FeatureTest {
         scenario.setId(1);
         scenario.setName("User is searching from the home page");
         scenario.setDescription("This is a description");
-        gherkinsTags.add(new GherkinsTag(1,"testId", "100.1"));
-        gherkinsTags.add(new GherkinsTag(2,"browser", "firefox"));
+        gherkinsTags.add(new GherkinsTag("testId", "100.1"));
+        gherkinsTags.add(new GherkinsTag("browser", "firefox"));
         scenario.setGherkinsTags(gherkinsTags);
-        steps.add(new Step(1, GherkinsKeyword.GIVEN, "the user is on the home page"));
-        steps.add(new Step(2, GherkinsKeyword.WHEN, "the user enters the keyword \"pycon\""));
-        steps.add(new Step(3, GherkinsKeyword.THEN, "the user does not see the error message \"No results found.\""));
+        steps.add(new Step(GherkinsKeyword.GIVEN, "the user is on the home page"));
+        steps.add(new Step(GherkinsKeyword.WHEN, "the user enters the keyword \"pycon\""));
+        steps.add(new Step(GherkinsKeyword.THEN, "the user does not see the error message \"No results found.\""));
         scenario.setSteps(steps);
 
         ArrayList<Scenario> scenarios = new ArrayList<Scenario>();
@@ -42,7 +42,7 @@ public class FeatureTest {
         scenarios.add(scenario);
         scenarios.add(scenario);
 
-        Feature feature = new Feature(1, "User searches for article",
+        Feature feature = new Feature("User searches for article",
                 "This is a description of the feature file", scenarios);
 
         log.info(feature.toGherkinsFile());

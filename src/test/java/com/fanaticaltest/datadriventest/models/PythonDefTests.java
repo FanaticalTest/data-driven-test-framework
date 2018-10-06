@@ -25,7 +25,7 @@ public class PythonDefTests {
     @Test
     public void createPythonDefSetup() throws IOException
     {
-        PythonDefSetup pythonDefSetup = new PythonDefSetup(1,"Python Setup", "This is a description");
+        PythonDefSetup pythonDefSetup = new PythonDefSetup("Python Setup", "This is a description");
         ArrayList<Module> modules = new ArrayList<Module>();
 
         String snippet = indentationOnce + "def setUp(self):" + newLine;
@@ -35,7 +35,7 @@ public class PythonDefTests {
                 "desired_capabilities={'browserName': 'firefox', 'version': '3', 'javascriptEnabled': True})" +
                 newLine;
 
-        Module module = new Module(1,"Setup module", snippet);
+        Module module = new Module("Setup module", snippet);
 
         modules.add(module);
         pythonDefSetup.setModules(modules);
@@ -56,13 +56,13 @@ public class PythonDefTests {
     @Test
     public void createPythonDefTearDown() throws IOException
     {
-        PythonDefTearDown pythonDefTearDown = new PythonDefTearDown(1,"Python TearDown", "This is a description");
+        PythonDefTearDown pythonDefTearDown = new PythonDefTearDown("Python TearDown", "This is a description");
         ArrayList<Module> modules = new ArrayList<Module>();
 
         String snippet = indentationOnce + "def tearDown(self):" + newLine;
         snippet += indentationTwice + "self.driver.close()" + newLine;
 
-        Module module = new Module(1,"Setup module", snippet);
+        Module module = new Module("Setup module", snippet);
 
         modules.add(module);
         pythonDefTearDown.setModules(modules);

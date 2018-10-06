@@ -27,7 +27,7 @@ public class ModulesTests {
         String snippet = indentation + "elem = driver.find_element_by_name(\"q\")" + newLine;
         snippet += indentation + "elem.send_keys(\"pycon\")" + newLine;
         snippet += indentation + "elem.send_keys(Keys.RETURN)" + newLine;
-        Module module = new Module(1,"Find element", snippet);
+        Module module = new Module("Find element", snippet);
         module.setPosition(1);
         module.setComment("This is a comment");
         log.info(module.toPython());
@@ -42,14 +42,14 @@ public class ModulesTests {
     public void createSnippetFindElementWithParam() throws IOException
     {
         ArrayList<ModuleParameters> mp= new ArrayList<ModuleParameters>();
-        mp.add(new ModuleParameters(1,"var","elem"));
-        mp.add(new ModuleParameters(2,"id_element","q"));
-        mp.add(new ModuleParameters(3,"search_value","pycon"));
+        mp.add(new ModuleParameters("var","elem"));
+        mp.add(new ModuleParameters("id_element","q"));
+        mp.add(new ModuleParameters("search_value","pycon"));
 
         String snippet = indentation + "%%var%% = driver.find_element_by_name(\"%%id_element%%\")" + newLine;
         snippet += indentation + "%%var%%.send_keys(\"%%search_value%%\")" + newLine;
         snippet += indentation + "%%var%%.send_keys(Keys.RETURN)" + newLine;
-        Module module = new Module(1,"Find element", snippet, mp);
+        Module module = new Module("Find element", snippet, mp);
         log.info(module.toPython());
 
         FileWriter fileWriter = new FileWriter(outPutFilePath +"snippetWithParamFindElement.txt");
@@ -64,20 +64,20 @@ public class ModulesTests {
         String snippet = indentation + "elem = driver.find_element_by_name(\"q\")" + newLine;
         snippet += indentation + "elem.send_keys(\"pycon\")" + newLine;
         snippet += indentation + "elem.send_keys(Keys.RETURN)" + newLine;
-        Module module = new Module(1,"Find element", snippet);
+        Module module = new Module("Find element", snippet);
         module.setPosition(1);
         module.setComment("This is a comment");
         log.info(module.toPython());
 
         ArrayList<ModuleParameters> mp= new ArrayList<ModuleParameters>();
-        mp.add(new ModuleParameters(1,"var","elem"));
-        mp.add(new ModuleParameters(2,"id_element","q"));
-        mp.add(new ModuleParameters(3,"search_value","pycon"));
+        mp.add(new ModuleParameters("var","elem"));
+        mp.add(new ModuleParameters("id_element","q"));
+        mp.add(new ModuleParameters("search_value","pycon"));
 
         String snippetWP = indentation + "%%var%% = driver.find_element_by_name(\"%%id_element%%\")" + newLine;
         snippetWP += indentation + "%%var%%.send_keys(\"%%search_value%%\")" + newLine;
         snippetWP += indentation + "%%var%%.send_keys(Keys.RETURN)" + newLine;
-        Module moduleWP = new Module(1,"Find element", snippetWP, mp);
+        Module moduleWP = new Module("Find element", snippetWP, mp);
         log.info(moduleWP.toPython());
 
         assert (module.toPython().equals(moduleWP.toPython()));

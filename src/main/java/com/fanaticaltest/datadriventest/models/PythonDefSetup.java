@@ -5,8 +5,8 @@ package com.fanaticaltest.datadriventest.models;
  */
 public class PythonDefSetup extends PythonDef {
 
-    public PythonDefSetup(Integer id, String name, String description) {
-        super(id, name, description);
+    public PythonDefSetup(String name, String description) {
+        super(name, description);
     }
 
 }

@@ -24,14 +24,14 @@ public class StepTests {
     @Test
     public void createStep() throws IOException
     {
-        Step step = new Step(1,GherkinsKeyword.WHEN,"the user enters the keyword \"pycon\"");
+        Step step = new Step(GherkinsKeyword.WHEN,"the user enters the keyword \"pycon\"");
         String stringValidation = "WHEN the user enters the keyword \"pycon\"";
 
         //Create a module, ArrayList of Module and add it in the Step
         String snippet = indentation + "elem = driver.find_element_by_name(\"q\")" + newLine;
         snippet += indentation + "elem.send_keys(\"pycon\")" + newLine;
         snippet += indentation + "elem.send_keys(Keys.RETURN)" + newLine;
-        Module module = new Module(1,"Find element", snippet);
+        Module module = new Module("Find element", snippet);
         module.setPosition(1);
         module.setComment("This is a comment");
         ArrayList<Module> modules = new ArrayList<Module>();

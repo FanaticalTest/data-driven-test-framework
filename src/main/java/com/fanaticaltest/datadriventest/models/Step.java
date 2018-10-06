@@ -13,7 +13,7 @@ public class Step {
     private ArrayList<Module> modules;
 
     //Constructor
-    public Step(Integer id, GherkinsKeyword gherkinsKeyword, String phrase) {
+    public Step(GherkinsKeyword gherkinsKeyword, String phrase) {
         this.id = id;
         this.gherkinsKeyword = gherkinsKeyword;
         this.phrase = phrase;

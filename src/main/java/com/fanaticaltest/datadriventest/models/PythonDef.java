@@ -11,7 +11,7 @@ public class PythonDef {
     private ArrayList<Module> modules;
 
     //Constructors
-    public PythonDef(Integer id, String name, String description) {
+    public PythonDef(String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;

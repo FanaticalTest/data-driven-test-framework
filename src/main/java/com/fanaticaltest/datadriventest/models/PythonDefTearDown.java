@@ -5,8 +5,8 @@ package com.fanaticaltest.datadriventest.models;
  */
 public class PythonDefTearDown extends PythonDef {
 
-    public PythonDefTearDown(Integer id, String name, String description) {
-        super(id, name, description);
+    public PythonDefTearDown(String name, String description) {
+        super(name, description);
     }
 
 }

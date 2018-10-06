@@ -13,7 +13,7 @@ public class Module {
     private Integer position;
 
     // Constructors
-    public Module(Integer id, String name, String snippet) {
+    public Module(String name, String snippet) {
         this.id = id;
         this.name = name;
         this.snippet = snippet;
@@ -21,7 +21,7 @@ public class Module {
         this.position = 0;
     }
 
-    public Module(Integer id, String name, String snippet, ArrayList<ModuleParameters> moduleParameter) {
+    public Module(String name, String snippet, ArrayList<ModuleParameters> moduleParameter) {
         this.id = id;
         this.name = name;
         this.snippet = snippet;

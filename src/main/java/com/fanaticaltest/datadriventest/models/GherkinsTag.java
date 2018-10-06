@@ -3,8 +3,8 @@ package com.fanaticaltest.datadriventest.models;
 public class GherkinsTag extends ModuleParameters {
 
     //Constructor
-    public GherkinsTag(Integer id, String name, String value) {
-        super(id, name, value);
+    public GherkinsTag( String name, String value) {
+        super( name, value);
     }
 
     //Method

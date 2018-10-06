@@ -25,7 +25,7 @@ public class ScenarioTest {
     @Test
     public void createGherkinsTag()
     {
-        GherkinsTag gherkinsTag = new GherkinsTag(1,"testId", "100.1");
+        GherkinsTag gherkinsTag = new GherkinsTag("testId", "100.1");
         log.info(gherkinsTag.toGherkinsFile());
 
         assert (gherkinsTag.toGherkinsFile().equals("@testId=100.1 "));
@@ -38,7 +38,7 @@ public class ScenarioTest {
         dependencies += "from selenium import webdriver" + newLine;
         dependencies += "from selenium.webdriver.common.keys import Keys" + newLine;
 
-        PythonDependencies pythonDependencies = new PythonDependencies(1,"name","description", dependencies);
+        PythonDependencies pythonDependencies = new PythonDependencies("name","description", dependencies);
         log.info(pythonDependencies.toPython());
 
         assert (pythonDependencies.toPython().contains("import unittest\n"));
@@ -56,12 +56,12 @@ public class ScenarioTest {
         scenario.setId(1);
         scenario.setName("User is searching from the home page");
         scenario.setDescription("This is a description");
-        gherkinsTags.add(new GherkinsTag(1,"testId", "100.1"));
-        gherkinsTags.add(new GherkinsTag(2,"browser", "firefox"));
+        gherkinsTags.add(new GherkinsTag("testId", "100.1"));
+        gherkinsTags.add(new GherkinsTag("browser", "firefox"));
         scenario.setGherkinsTags(gherkinsTags);
-        steps.add(new Step(1, GherkinsKeyword.GIVEN, "the user is on the home page"));
-        steps.add(new Step(2, GherkinsKeyword.WHEN, "the user enters the keyword \"pycon\""));
-        steps.add(new Step(3, GherkinsKeyword.THEN, "the user does not see the error message \"No results found.\""));
+        steps.add(new Step(GherkinsKeyword.GIVEN, "the user is on the home page"));
+        steps.add(new Step(GherkinsKeyword.WHEN, "the user enters the keyword \"pycon\""));
+        steps.add(new Step(GherkinsKeyword.THEN, "the user does not see the error message \"No results found.\""));
         scenario.setSteps(steps);
 
         log.info(scenario.toGherkinsFile());
@@ -89,7 +89,7 @@ public class ScenarioTest {
         scenario.setName("User is searching from the home page");
         scenario.setDescription("This is a description");
         scenario.setGherkinsTags(gherkinsTags);
-        steps.add(new Step(1, GherkinsKeyword.GIVEN, "the user is on the home page"));
+        steps.add(new Step(GherkinsKeyword.GIVEN, "the user is on the home page"));
         scenario.setSteps(steps);
 
         log.info(scenario.toGherkinsFile());
@@ -112,10 +112,10 @@ public class ScenarioTest {
         String dependencies = "import unittest" + newLine;
         dependencies += "from selenium import webdriver" + newLine;
         dependencies += "from selenium.webdriver.common.keys import Keys" + newLine;
-        scenario.setPythonDependencies(new PythonDependencies(1,"name","description", dependencies));
+        scenario.setPythonDependencies(new PythonDependencies("name","description", dependencies));
 
         //Add pythonDefSetup
-        PythonDefSetup pythonDefSetup = new PythonDefSetup(1,"Python Setup", "This is a description");
+        PythonDefSetup pythonDefSetup = new PythonDefSetup("Python Setup", "This is a description");
         ArrayList<Module> modulesDefSetup = new ArrayList<Module>();
 
         String snippetDefSetup = indentationOnce + "def setUp(self):" + newLine;
@@ -125,7 +125,7 @@ public class ScenarioTest {
                 "desired_capabilities={'browserName': 'firefox', 'version': '3', 'javascriptEnabled': True})" +
                 newLine;
 
-        modulesDefSetup.add(new Module(1,"Setup module", snippetDefSetup));
+        modulesDefSetup.add(new Module("Setup module", snippetDefSetup));
         pythonDefSetup.setModules(modulesDefSetup);
 
         scenario.setPythonDefSetup(pythonDefSetup);
@@ -133,13 +133,13 @@ public class ScenarioTest {
         scenario.setSteps(buildSteps());
 
         // Add pythonDefTearDown
-        PythonDefTearDown pythonDefTearDown = new PythonDefTearDown(1,"Python TearDown", "This is a description");
+        PythonDefTearDown pythonDefTearDown = new PythonDefTearDown("Python TearDown", "This is a description");
         ArrayList<Module> modulesDefTearDown = new ArrayList<Module>();
 
         String snippetDefTearDown = indentationOnce + "def tearDown(self):" + newLine;
         snippetDefTearDown += indentationTwice + "self.driver.close()" + newLine;
 
-        modulesDefTearDown.add(new Module(1,"Setup module", snippetDefTearDown));
+        modulesDefTearDown.add(new Module("Setup module", snippetDefTearDown));
         pythonDefTearDown.setModules(modulesDefTearDown);
 
         scenario.setPythonDefTearDown(pythonDefTearDown);
@@ -194,8 +194,8 @@ public class ScenarioTest {
     private Step buildStep(Integer id, GherkinsKeyword gherkinsKeyword, String phrase, String snippet,
                            Integer moduleId)
     {
-        Step step = new Step(id,gherkinsKeyword,phrase);
-        Module module = new Module(moduleId,"Module name", snippet);
+        Step step = new Step(gherkinsKeyword,phrase);
+        Module module = new Module("Module name", snippet);
         module.setPosition(1);
         module.setComment("This is a comment");
         ArrayList<Module> modules = new ArrayList<Module>();

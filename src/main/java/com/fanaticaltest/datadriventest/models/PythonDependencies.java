@@ -8,7 +8,7 @@ public class PythonDependencies {
     private String snippet;
 
     //Constructor
-    public PythonDependencies(Integer id, String name, String description, String snippet) {
+    public PythonDependencies(String name, String description, String snippet) {
         this.id = id;
         this.name = name;
         this.description = description;

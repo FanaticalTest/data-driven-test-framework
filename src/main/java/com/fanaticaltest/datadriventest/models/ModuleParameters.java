@@ -9,8 +9,7 @@ public class ModuleParameters {
 
     public ModuleParameters () {}
 
-    public ModuleParameters (Integer id, String name, String value) {
-        this.id = id;
+    public ModuleParameters (String name, String value) {
         this.name = name;
         this.value = value;
     }
