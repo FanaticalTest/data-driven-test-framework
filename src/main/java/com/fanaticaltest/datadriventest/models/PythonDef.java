@@ -9,16 +9,15 @@ public class PythonDef {
     private String name;
     private String description;
     private ArrayList<Module> modules;
+    private Scenario scenario;
 
     //Constructors
     public PythonDef(String name, String description) {
-        this.id = id;
         this.name = name;
         this.description = description;
     }
 
     //Getter and Setter
-
     public Integer getId() {
         return id;
     }
@@ -51,7 +50,15 @@ public class PythonDef {
         this.modules = modules;
     }
 
+    public Scenario getScenario() {
+        return scenario;
+    }
 
+    public void setScenario(Scenario scenario) {
+        this.scenario = scenario;
+    }
+
+    //Methods
     public String toPython() {
         String snippets = "";
 

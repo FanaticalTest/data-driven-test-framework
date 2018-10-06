@@ -11,10 +11,10 @@ public class Step {
     private GherkinsKeyword gherkinsKeyword;
     private String phrase;
     private ArrayList<Module> modules;
+    private Scenario scenario;
 
     //Constructor
     public Step(GherkinsKeyword gherkinsKeyword, String phrase) {
-        this.id = id;
         this.gherkinsKeyword = gherkinsKeyword;
         this.phrase = phrase;
     }
@@ -50,6 +50,14 @@ public class Step {
 
     public void setModules(ArrayList<Module> modules) {
         this.modules = modules;
+    }
+
+    public Scenario getScenario() {
+        return scenario;
+    }
+
+    public void setScenario(Scenario scenario) {
+        this.scenario = scenario;
     }
 
     //Methods

@@ -12,6 +12,7 @@ public class Scenario {
     private PythonDependencies pythonDependencies;
     private PythonDefSetup pythonDefSetup;
     private PythonDefTearDown pythonDefTearDown;
+    private Feature feature;
 
     //Constructor
     public Scenario() {}
@@ -80,6 +81,14 @@ public class Scenario {
 
     public void setPythonDefTearDown(PythonDefTearDown pythonDefTearDown) {
         this.pythonDefTearDown = pythonDefTearDown;
+    }
+
+    public Feature getFeature() {
+        return feature;
+    }
+
+    public void setFeature(Feature feature) {
+        this.feature = feature;
     }
 
     //Methods

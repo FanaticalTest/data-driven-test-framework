@@ -14,7 +14,6 @@ public class Feature {
 
     //Constructor
     public Feature(String name, String description, ArrayList<Scenario> scenarios) {
-        this.id = id;
         this.name = name;
         this.description = description;
         this.scenarios = scenarios;

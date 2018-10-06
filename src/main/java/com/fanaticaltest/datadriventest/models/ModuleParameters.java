@@ -6,7 +6,9 @@ public class ModuleParameters {
     private Integer id;
     private String name;
     private String value;
+    private Module module;
 
+    //constructors
     public ModuleParameters () {}
 
     public ModuleParameters (String name, String value) {
@@ -14,6 +16,7 @@ public class ModuleParameters {
         this.value = value;
     }
 
+    //Getter and Setter
     public Integer getId() {
         return id;
     }
@@ -36,5 +39,13 @@ public class ModuleParameters {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
     }
 }

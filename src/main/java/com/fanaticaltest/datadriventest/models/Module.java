@@ -11,10 +11,10 @@ public class Module {
     private String snippet;
     private ArrayList<ModuleParameters> moduleParameter;
     private Integer position;
+    private Step step;
 
     // Constructors
     public Module(String name, String snippet) {
-        this.id = id;
         this.name = name;
         this.snippet = snippet;
         this.moduleParameter = new ArrayList<ModuleParameters>();
@@ -22,7 +22,6 @@ public class Module {
     }
 
     public Module(String name, String snippet, ArrayList<ModuleParameters> moduleParameter) {
-        this.id = id;
         this.name = name;
         this.snippet = snippet;
         this.moduleParameter = moduleParameter;
@@ -76,6 +75,14 @@ public class Module {
 
     public void setPosition(Integer position) {
         this.position = position;
+    }
+
+    public Step getStep() {
+        return step;
+    }
+
+    public void setStep(Step step) {
+        this.step = step;
     }
 
     // Methods
